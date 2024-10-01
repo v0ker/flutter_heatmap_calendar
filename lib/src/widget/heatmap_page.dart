@@ -133,7 +133,10 @@ class HeatMapPage extends StatelessWidget {
       ));
 
       // also add first day's month information to _firstDayInfos list.
-      _firstDayInfos.add(_firstDay.month);
+      if (_firstDay.month >= startDate.month &&
+          _firstDay.month <= endDate.month) {
+        _firstDayInfos.add(_firstDay.month);
+      }
     }
 
     return columns;
