@@ -25,7 +25,7 @@ class HeatMapWeekText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var weekDays = <String>[];
-    weekDays.add("");
+    weekDays.add(" ");
     for (String label in DateUtil.getShortWeekDays()) {
       weekDays.add(label);
     }
