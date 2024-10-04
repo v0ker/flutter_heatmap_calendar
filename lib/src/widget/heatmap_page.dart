@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import './heatmap_month_text.dart';
 import './heatmap_column.dart';
 import '../data/heatmap_color_mode.dart';
@@ -12,7 +13,7 @@ class HeatMapPage extends StatelessWidget {
   /// List value of every sunday's month information.
   ///
   /// From 1: January to 12: December.
-  final List<int> _firstDayInfos = [];
+  final List<String> _firstDayInfos = [];
 
   /// The number of days between [startDate] and [endDate].
   final int _dateDifferent;
@@ -135,7 +136,10 @@ class HeatMapPage extends StatelessWidget {
       // also add first day's month information to _firstDayInfos list.
       if (_firstDay.month >= startDate.month &&
           _firstDay.month <= endDate.month) {
-        _firstDayInfos.add(_firstDay.month);
+        // use intl to get month name
+        var locale = Intl.getCurrentLocale();
+        String monthName = DateFormat.MMMM(locale).format(_firstDay);
+        _firstDayInfos.add(monthName);
       }
     }
 
