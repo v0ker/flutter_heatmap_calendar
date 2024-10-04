@@ -31,11 +31,13 @@ class HeatMapWeekText extends StatelessWidget {
           Container(
             height: size ?? 20,
             margin: margin ?? const EdgeInsets.all(2.0),
-            child: Text(
-              label,
-              style: TextStyle(
-                fontSize: fontSize ?? 12,
-                color: fontColor,
+            child: Center(
+              child: Text(
+                label,
+                style: TextStyle(
+                  fontSize: fontSize ?? 12,
+                  color: fontColor,
+                ),
               ),
             ),
           ),
