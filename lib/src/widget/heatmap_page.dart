@@ -136,9 +136,9 @@ class HeatMapPage extends StatelessWidget {
       // also add first day's month information to _firstDayInfos list.
       if (_firstDay.month >= startDate.month &&
           _firstDay.month <= endDate.month) {
-        // use intl to get month name
+        // use intl to get month short name
         var locale = Intl.getCurrentLocale();
-        String monthName = DateFormat.MMMM(locale).format(_firstDay);
+        String monthName = DateFormat.MMM(locale).format(_firstDay);
         _firstDayInfos.add(monthName);
       }
     }
