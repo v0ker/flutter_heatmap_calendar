@@ -24,6 +24,11 @@ class HeatMapWeekText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var weekDays = <String>[];
+    weekDays.add("");
+    for (String label in DateUtil.getShortWeekDays()) {
+      weekDays.add(label);
+    }
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
@@ -31,13 +36,11 @@ class HeatMapWeekText extends StatelessWidget {
           Container(
             height: size ?? 20,
             margin: margin ?? const EdgeInsets.all(2.0),
-            child: Center(
-              child: Text(
-                label,
-                style: TextStyle(
-                  fontSize: fontSize ?? 12,
-                  color: fontColor,
-                ),
+            child: Text(
+              label,
+              style: TextStyle(
+                fontSize: fontSize ?? 12,
+                color: fontColor,
               ),
             ),
           ),
