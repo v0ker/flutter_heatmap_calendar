@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class DateUtil {
   static const int DAYS_IN_WEEK = 7;
 
@@ -43,6 +45,17 @@ class DateUtil {
     'Fri',
     'Sat',
   ];
+
+  static List<String> getShortWeekDays() {
+    List<String> weekdays = [];
+    DateTime now = DateTime.now();
+    for (int i = 1; i <= 7; i++) {
+      int diff = now.weekday - i;
+      DateTime date = now.add(Duration(days: -diff));
+      weekdays.add(DateFormat('E').format(date));
+    }
+    return weekdays;
+  }
 
   /// Get start day of month.
   static DateTime startDayOfMonth(final DateTime referenceDate) =>
