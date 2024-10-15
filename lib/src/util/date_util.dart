@@ -50,7 +50,7 @@ class DateUtil {
   static List<String> getShortWeekDays(BuildContext context) {
     List<String> weekdays = [];
     DateTime now = DateTime.now();
-    for (int i = 1; i <= 7; i++) {
+    for (int i = 0; i < 7; i++) {
       int diff = now.weekday - i;
       Locale locale = Localizations.localeOf(context);
       DateTime date = now.add(Duration(days: -diff));
