@@ -96,7 +96,7 @@ class HeatMapPage extends StatelessWidget {
         super(key: key);
 
   /// Get [HeatMapColumn] from [startDate] to [endDate].
-  List<Widget> _heatmapColumnList() {
+  List<Widget> _heatmapColumnList(BuildContext context) {
     // Create empty list.
     List<Widget> columns = [];
 
@@ -137,7 +137,9 @@ class HeatMapPage extends StatelessWidget {
       if (_firstDay.month >= startDate.month &&
           _firstDay.month <= endDate.month) {
         // use intl to get month short name
-        String monthName = DateFormat.MMM().format(_firstDay);
+        var locale = Localizations.localeOf(context);
+        String monthName =
+            DateFormat.MMM(locale.languageCode).format(_firstDay);
         _firstDayInfos.add(monthName);
       }
     }
@@ -173,7 +175,7 @@ class HeatMapPage extends StatelessWidget {
 
                 // Heatmap itself.
                 Row(
-                  children: <Widget>[..._heatmapColumnList()],
+                  children: <Widget>[..._heatmapColumnList(context)],
                 ),
               ],
             ),
