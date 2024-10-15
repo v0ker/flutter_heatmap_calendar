@@ -18,6 +18,11 @@ class HeatMap extends StatefulWidget {
   /// Default value is [DateTime.now].
   final DateTime? endDate;
 
+  /// The integer value of the maximum value for display.
+  ///
+  /// Get highest key value of filtered datasets using [DatasetsUtil.getMaxValue].
+  final int? maxValue;
+
   /// The datasets which fill blocks based on its value.
   final Map<DateTime, int>? datasets;
 
@@ -99,6 +104,7 @@ class HeatMap extends StatefulWidget {
     this.onClick,
     this.margin,
     this.borderRadius,
+    this.maxValue,
     this.datasets,
     this.defaultColor,
     this.showText = false,
@@ -138,6 +144,7 @@ class _HeatMap extends State<HeatMap> {
           colorMode: widget.colorMode,
           size: widget.size,
           fontSize: widget.fontSize,
+          maxValue: widget.maxValue,
           datasets: widget.datasets,
           defaultColor: widget.defaultColor,
           textColor: widget.textColor,

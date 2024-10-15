@@ -64,7 +64,7 @@ class HeatMapPage extends StatelessWidget {
   /// The double value of every block's borderRadius.
   final double? borderRadius;
 
-  /// The integer value of the maximum value for the [datasets].
+  /// The integer value of the maximum value for display.
   ///
   /// Get highest key value of filtered datasets using [DatasetsUtil.getMaxValue].
   final int? maxValue;
@@ -83,6 +83,7 @@ class HeatMapPage extends StatelessWidget {
     required this.endDate,
     this.size,
     this.fontSize,
+    this.maxValue,
     this.datasets,
     this.defaultColor,
     this.textColor,
@@ -92,7 +93,6 @@ class HeatMapPage extends StatelessWidget {
     this.margin,
     this.showText,
   })  : _dateDifferent = endDate.difference(startDate).inDays,
-        maxValue = DatasetsUtil.getMaxValue(datasets),
         super(key: key);
 
   /// Get [HeatMapColumn] from [startDate] to [endDate].
@@ -100,6 +100,7 @@ class HeatMapPage extends StatelessWidget {
     // Create empty list.
     List<Widget> columns = [];
 
+    int maxValueForColumn = maxValue ?? DatasetsUtil.getMaxValue(datasets);
     // Set cursor(position) to first day of weeks
     // until cursor reaches the final week.
     for (int datePos = 0 - (startDate.weekday % 7);
@@ -127,7 +128,7 @@ class HeatMapPage extends StatelessWidget {
         textColor: textColor,
         borderRadius: borderRadius,
         margin: margin,
-        maxValue: maxValue,
+        maxValue: maxValueForColumn,
         onClick: onClick,
         datasets: datasets,
         showText: showText,
