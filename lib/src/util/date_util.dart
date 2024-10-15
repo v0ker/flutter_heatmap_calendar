@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 
 class DateUtil {
@@ -46,13 +47,14 @@ class DateUtil {
     'Sat',
   ];
 
-  static List<String> getShortWeekDays() {
+  static List<String> getShortWeekDays(BuildContext context) {
     List<String> weekdays = [];
     DateTime now = DateTime.now();
     for (int i = 1; i <= 7; i++) {
       int diff = now.weekday - i;
+      Locale locale = Localizations.localeOf(context);
       DateTime date = now.add(Duration(days: -diff));
-      weekdays.add(DateFormat('E').format(date));
+      weekdays.add(DateFormat('E', locale.languageCode).format(date));
     }
     return weekdays;
   }
